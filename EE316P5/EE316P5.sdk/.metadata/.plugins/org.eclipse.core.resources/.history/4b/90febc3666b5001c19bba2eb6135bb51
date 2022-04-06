@@ -1,0 +1,11 @@
+#include "xtmrctr.h"   /* xTimer Control */
+#include "xadcps.h"    /* xADC Control */
+#include "xparameters.h"
+#include "xil_exception.h"
+#include "PWM.h"       /* Custom PWM Control */
+#include "xsysmon.h"
+#include "sleep.h"
+#include "stdio.h"
+#include "xgpio.h"
+#include "xil_types.h"
+#include "debounce.h"

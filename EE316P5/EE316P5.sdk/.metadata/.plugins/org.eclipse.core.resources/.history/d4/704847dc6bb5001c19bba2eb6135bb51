@@ -1,0 +1,25 @@
+
+/***************************** Include Files *********************************/
+#include "main.h"
+
+/************************** Variable Definitions *****************************/
+XTmrCtr TimerCounterInst;  /* The instance of the Timer Counter */
+XAdcPs ADCInst;            /* The instance of the ADC */
+XSysMon Xadc;
+XGpio Btn;
+
+int main(void)
+{
+	u8 ChannelIndex = 0;
+	u32 Btn_Data;
+	Debounce Btn0_Db, Btn1_Db, Btn2_Db, Btn3_Db;
+	u32 time_count = 0;
+	timerPWM_Init(&TimerCounterInst);   //Initialize Timer PWM
+	timerPWM_Config(&TimerCounterInst,TIMER_PWM_PERIOD,TIMER_PWM_PERIOD/2); //Initialized to 50% duty
+	PWM_Config(PWM_PERIOD,PWM_PERIOD/2,0); //Initialized to 50% duty
+	while(1){
+		printf("PWM Duty: %d, PWM Period: %d",PWM_Get_Period(XPAR_PWM_0_PWM_AXI_BASEADDR),PWM_Get_Duty(XPAR_PWM_0_PWM_AXI_BASEADDR,PWM_index));
+	}
+}
+
+

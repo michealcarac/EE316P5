@@ -1,0 +1,43 @@
+
+/***************************** Include Files *********************************/
+#include "main.h"
+
+/************************** Variable Definitions *****************************/
+XTmrCtr TimerCounterInst;  /* The instance of the Timer Counter */
+XAdcPs ADCInst;            /* The instance of the ADC */
+
+
+int main(void)
+{
+	timerPWM_Init(&TimerCounterInst);   //Initialize Timer PWM
+	timerPWM_Config(&TimerCounterInst,TIMER_PWM_PERIOD,TIMER_PWM_PERIOD/2); //Initialized to 50% duty
+	PWM_Config(PWM_PERIOD,PWM_PERIOD/2,0); //Initialized to 50% duty
+	while(1){
+		printf("PWM Duty: %d, PWM Period: %d",PWM_Get_Period(XPAR_PWM_0_PWM_AXI_BASEADDR),PWM_Get_Duty(XPAR_PWM_0_PWM_AXI_BASEADDR,PWM_index));
+	}
+}
+
+void PWM_Config(int period, int duty,int pwmIndex){
+	PWM_Disable(XPAR_PWM_0_PWM_AXI_BASEADDR);
+	PWM_Set_Period(XPAR_PWM_0_PWM_AXI_BASEADDR, period);
+	PWM_Set_Duty(XPAR_PWM_0_PWM_AXI_BASEADDR, duty, pwmIndex);
+	PWM_Enable(XPAR_PWM_0_PWM_AXI_BASEADDR);
+}
+
+
+void timerPWM_Config(XTmrCtr *InstancePtr, int period, int duty){
+	/* Disable PWM for reconfiguration */
+	XTmrCtr_PwmDisable(InstancePtr);
+	XTmrCtr_PwmConfigure(InstancePtr, period, duty);
+	/* Enable PWM */
+	XTmrCtr_PwmEnable(InstancePtr);
+}
+
+void timerPWM_Init(XTmrCtr *InstancePtr){
+	int Status;
+	Status = XTmrCtr_Initialize(InstancePtr, TMRCTR_PWM_DEVICE_ID);
+	if (Status != XST_SUCCESS) {
+		printf("PWM INIT FAIL");
+	}
+}
+

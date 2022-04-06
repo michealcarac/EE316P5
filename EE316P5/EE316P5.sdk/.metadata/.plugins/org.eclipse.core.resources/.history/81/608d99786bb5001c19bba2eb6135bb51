@@ -1,0 +1,20 @@
+
+/***************************** Include Files *********************************/
+#include "main.h"
+
+/************************** Variable Definitions *****************************/
+XTmrCtr TimerCounterInst;  /* The instance of the Timer Counter */
+XAdcPs ADCInst;            /* The instance of the ADC */
+
+
+int main(void)
+{
+	timerPWM_Init(&TimerCounterInst);   //Initialize Timer PWM
+	timerPWM_Config(&TimerCounterInst,TIMER_PWM_PERIOD,TIMER_PWM_PERIOD/2); //Initialized to 50% duty
+	PWM_Config(PWM_PERIOD,PWM_PERIOD/2,0); //Initialized to 50% duty
+	while(1){
+		printf("PWM Duty: %d, PWM Period: %d",PWM_Get_Period(XPAR_PWM_0_PWM_AXI_BASEADDR),PWM_Get_Duty(XPAR_PWM_0_PWM_AXI_BASEADDR,PWM_index));
+	}
+}
+
+

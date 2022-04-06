@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;SYSTEM/src/PWM.c&apos; to &apos;xpwm_funct.c&apos;" description="Rename resource &apos;PWM.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/PWM.c" name="xpwm_funct.c" stamp="1649222365800" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;SYSTEM/src/adc.c&apos; to &apos;xadc_funct.c&apos;" description="Rename resource &apos;adc.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/adc.c" name="xadc_funct.c" stamp="1649222376330" updateReferences="true"/>
+</session>
