@@ -169,10 +169,10 @@ entity system_xadc_wiz_0_0_xadc_core_drp is
      ---------------- interrupt interface with the system  -----------
      Interrupt_status       : out std_logic_vector(0 to IP_INTR_NUM-1);
      ----------------  sysmon macro interface  -------------------
-     vauxp0                 : in  STD_LOGIC;                         -- Auxiliary Channel 0
-     vauxn0                 : in  STD_LOGIC;
      vauxp1                 : in  STD_LOGIC;                         -- Auxiliary Channel 1
      vauxn1                 : in  STD_LOGIC;
+     vauxp9                 : in  STD_LOGIC;                         -- Auxiliary Channel 9
+     vauxn9                 : in  STD_LOGIC;
      busy_out               : out  STD_LOGIC;                        -- ADC Busy signal
      channel_out            : out  STD_LOGIC_VECTOR (4 downto 0);    -- Channel Selection Outputs
      eoc_out                : out  STD_LOGIC;                        -- End of Conversion Signal
@@ -922,8 +922,8 @@ alarm_out <= alarm_reg(8 downto 1);-- updated from 2 downto 1 to 8 downto 1 for 
 --    VAUXP            which provides differential analog inputs
 --    MUXADDR       -- External address multiplexer driven by Channel selection
 --                     Registers
-        aux_channel_p(0) <= vauxp0;
-        aux_channel_n(0) <= vauxn0;
+        aux_channel_p(0) <= '0';
+        aux_channel_n(0) <= '0';
 
         aux_channel_p(1) <= vauxp1;
         aux_channel_n(1) <= vauxn1;
@@ -949,8 +949,8 @@ alarm_out <= alarm_reg(8 downto 1);-- updated from 2 downto 1 to 8 downto 1 for 
         aux_channel_p(8) <= '0';
         aux_channel_n(8) <= '0';
 
-        aux_channel_p(9) <= '0';
-        aux_channel_n(9) <= '0';
+        aux_channel_p(9) <= vauxp9;
+        aux_channel_n(9) <= vauxn9;
 
         aux_channel_p(10) <= '0';
         aux_channel_n(10) <= '0';
@@ -976,7 +976,7 @@ alarm_out <= alarm_reg(8 downto 1);-- updated from 2 downto 1 to 8 downto 1 for 
         INIT_41 => X"21A0", -- config reg 1
         INIT_42 => X"7C00", -- config reg 2
         INIT_48 => X"0800", -- Sequencer channel selection
-        INIT_49 => X"0003", -- Sequencer channel selection
+        INIT_49 => X"0202", -- Sequencer channel selection
         INIT_4A => X"0000", -- Sequencer Average selection
         INIT_4B => X"0000", -- Sequencer Average selection
         INIT_4C => X"0000", -- Sequencer Bipolar selection

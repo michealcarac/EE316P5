@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.1.3 (win64) Build 2644227 Wed Sep  4 09:45:24 MDT 2019
-// Date        : Tue Apr  5 18:09:58 2022
+// Date        : Tue Apr  5 18:09:57 2022
 // Host        : DESKTOP-0NNGBEI running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               c:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.srcs/sources_1/bd/system/ip/system_clk_wiz_0_0/system_clk_wiz_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top system_clk_wiz_0_0 -prefix
+//               system_clk_wiz_0_0_ system_clk_wiz_0_0_sim_netlist.v
 // Design      : system_clk_wiz_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -35,7 +35,6 @@ module system_clk_wiz_0_0
         .reset(reset));
 endmodule
 
-(* ORIG_REF_NAME = "system_clk_wiz_0_0_clk_wiz" *) 
 module system_clk_wiz_0_0_system_clk_wiz_0_0_clk_wiz
    (clk_125Mhz,
     reset,

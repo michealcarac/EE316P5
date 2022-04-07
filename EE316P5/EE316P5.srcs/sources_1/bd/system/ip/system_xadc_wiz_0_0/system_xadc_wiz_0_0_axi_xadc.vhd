@@ -190,10 +190,10 @@ entity system_xadc_wiz_0_0_axi_xadc is
    -- XADC External interface signals
 
     -- Conversion start control signal for Event driven mode
-    vauxp0          : in  STD_LOGIC;                         -- Auxiliary Channel 0
-    vauxn0          : in  STD_LOGIC;
     vauxp1          : in  STD_LOGIC;                         -- Auxiliary Channel 1
     vauxn1          : in  STD_LOGIC;
+    vauxp9          : in  STD_LOGIC;                         -- Auxiliary Channel 9
+    vauxn9          : in  STD_LOGIC;
     busy_out        : out  STD_LOGIC;                        -- ADC Busy signal
     channel_out     : out  STD_LOGIC_VECTOR (4 downto 0);    -- Channel Selection Outputs
     eoc_out         : out  STD_LOGIC;                        -- End of Conversion Signal
@@ -269,10 +269,10 @@ component system_xadc_wiz_0_0_xadc_core_drp
      ---------------- interrupt interface with the system  -----------
      Interrupt_status       : out std_logic_vector(0 to IP_INTR_NUM-1);
      ----------------  sysmon macro interface  -------------------
-     vauxp0                 : in  STD_LOGIC;                         -- Auxiliary Channel 0
-     vauxn0                 : in  STD_LOGIC;
      vauxp1                 : in  STD_LOGIC;                         -- Auxiliary Channel 1
      vauxn1                 : in  STD_LOGIC;
+     vauxp9                 : in  STD_LOGIC;                         -- Auxiliary Channel 9
+     vauxn9                 : in  STD_LOGIC;
      busy_out               : out  STD_LOGIC;                        -- ADC Busy signal
      channel_out            : out  STD_LOGIC_VECTOR (4 downto 0);    -- Channel Selection Outputs
      eoc_out                : out  STD_LOGIC;                        -- End of Conversion Signal
@@ -723,10 +723,10 @@ AXI_XADC_CORE_I : system_xadc_wiz_0_0_xadc_core_drp
     Sysmon_IP2Bus_RdAck          => xadc_ip2bus_rdack,
     Interrupt_status             => interrupt_status_i,
     --- external interface signals ------------------
-    vauxp0                       => vauxp0, 
-    vauxn0                       => vauxn0,
     vauxp1                       => vauxp1,
     vauxn1                       => vauxn1,
+    vauxp9                       => vauxp9,
+    vauxn9                       => vauxn9,
     busy_out                     => busy_out,
     channel_out                  => channel_out,
     eoc_out                      => eoc_out,

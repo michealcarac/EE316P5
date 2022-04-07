@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.1.3 (win64) Build 2644227 Wed Sep  4 09:45:24 MDT 2019
-// Date        : Tue Apr  5 17:13:57 2022
+// Date        : Thu Apr  7 01:11:30 2022
 // Host        : DESKTOP-0NNGBEI running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.srcs/sources_1/bd/system/ip/system_xadc_wiz_0_0/system_xadc_wiz_0_0_stub.v
@@ -16,11 +16,11 @@
 module system_xadc_wiz_0_0(s_axi_aclk, s_axi_aresetn, s_axi_awaddr, 
   s_axi_awvalid, s_axi_awready, s_axi_wdata, s_axi_wstrb, s_axi_wvalid, s_axi_wready, 
   s_axi_bresp, s_axi_bvalid, s_axi_bready, s_axi_araddr, s_axi_arvalid, s_axi_arready, 
-  s_axi_rdata, s_axi_rresp, s_axi_rvalid, s_axi_rready, ip2intc_irpt, vauxp0, vauxn0, vauxp1, 
-  vauxn1, busy_out, channel_out, eoc_out, eos_out, ot_out, vccddro_alarm_out, vccpint_alarm_out, 
+  s_axi_rdata, s_axi_rresp, s_axi_rvalid, s_axi_rready, ip2intc_irpt, vauxp1, vauxn1, vauxp9, 
+  vauxn9, busy_out, channel_out, eoc_out, eos_out, ot_out, vccddro_alarm_out, vccpint_alarm_out, 
   vccpaux_alarm_out, vccaux_alarm_out, vccint_alarm_out, user_temp_alarm_out, alarm_out, 
   vp_in, vn_in)
-/* synthesis syn_black_box black_box_pad_pin="s_axi_aclk,s_axi_aresetn,s_axi_awaddr[10:0],s_axi_awvalid,s_axi_awready,s_axi_wdata[31:0],s_axi_wstrb[3:0],s_axi_wvalid,s_axi_wready,s_axi_bresp[1:0],s_axi_bvalid,s_axi_bready,s_axi_araddr[10:0],s_axi_arvalid,s_axi_arready,s_axi_rdata[31:0],s_axi_rresp[1:0],s_axi_rvalid,s_axi_rready,ip2intc_irpt,vauxp0,vauxn0,vauxp1,vauxn1,busy_out,channel_out[4:0],eoc_out,eos_out,ot_out,vccddro_alarm_out,vccpint_alarm_out,vccpaux_alarm_out,vccaux_alarm_out,vccint_alarm_out,user_temp_alarm_out,alarm_out,vp_in,vn_in" */;
+/* synthesis syn_black_box black_box_pad_pin="s_axi_aclk,s_axi_aresetn,s_axi_awaddr[10:0],s_axi_awvalid,s_axi_awready,s_axi_wdata[31:0],s_axi_wstrb[3:0],s_axi_wvalid,s_axi_wready,s_axi_bresp[1:0],s_axi_bvalid,s_axi_bready,s_axi_araddr[10:0],s_axi_arvalid,s_axi_arready,s_axi_rdata[31:0],s_axi_rresp[1:0],s_axi_rvalid,s_axi_rready,ip2intc_irpt,vauxp1,vauxn1,vauxp9,vauxn9,busy_out,channel_out[4:0],eoc_out,eos_out,ot_out,vccddro_alarm_out,vccpint_alarm_out,vccpaux_alarm_out,vccaux_alarm_out,vccint_alarm_out,user_temp_alarm_out,alarm_out,vp_in,vn_in" */;
   input s_axi_aclk;
   input s_axi_aresetn;
   input [10:0]s_axi_awaddr;
@@ -41,10 +41,10 @@ module system_xadc_wiz_0_0(s_axi_aclk, s_axi_aresetn, s_axi_awaddr,
   output s_axi_rvalid;
   input s_axi_rready;
   output ip2intc_irpt;
-  input vauxp0;
-  input vauxn0;
   input vauxp1;
   input vauxn1;
+  input vauxp9;
+  input vauxn9;
   output busy_out;
   output [4:0]channel_out;
   output eoc_out;

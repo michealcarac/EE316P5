@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1.3 (win64) Build 2644227 Wed Sep  4 09:45:24 MDT 2019
---Date        : Tue Apr  5 18:08:05 2022
+--Date        : Thu Apr  7 01:08:47 2022
 --Host        : DESKTOP-0NNGBEI running 64-bit major release  (build 9200)
 --Command     : generate_target system_wrapper.bd
 --Design      : system_wrapper
@@ -34,10 +34,10 @@ entity system_wrapper is
     FIXED_IO_ps_clk : inout STD_LOGIC;
     FIXED_IO_ps_porb : inout STD_LOGIC;
     FIXED_IO_ps_srstb : inout STD_LOGIC;
-    Vaux0_0_v_n : in STD_LOGIC;
-    Vaux0_0_v_p : in STD_LOGIC;
     Vaux1_0_v_n : in STD_LOGIC;
     Vaux1_0_v_p : in STD_LOGIC;
+    Vaux9_0_v_n : in STD_LOGIC;
+    Vaux9_0_v_p : in STD_LOGIC;
     clk_sys : in STD_LOGIC;
     gpio_4btns_tri_i : in STD_LOGIC_VECTOR ( 3 downto 0 );
     gpio_lcd8_tri_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -74,13 +74,13 @@ architecture STRUCTURE of system_wrapper is
     DDR_dqs_n : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     DDR_dqs_p : inout STD_LOGIC_VECTOR ( 3 downto 0 );
     pwm_motor : out STD_LOGIC_VECTOR ( 0 to 0 );
-    Vaux0_0_v_n : in STD_LOGIC;
-    Vaux0_0_v_p : in STD_LOGIC;
     Vaux1_0_v_n : in STD_LOGIC;
     Vaux1_0_v_p : in STD_LOGIC;
     gpio_4btns_tri_i : in STD_LOGIC_VECTOR ( 3 downto 0 );
     gpio_lcd8_tri_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    pwm_o : out STD_LOGIC
+    pwm_o : out STD_LOGIC;
+    Vaux9_0_v_n : in STD_LOGIC;
+    Vaux9_0_v_p : in STD_LOGIC
   );
   end component system;
 begin
@@ -107,10 +107,10 @@ system_i: component system
       FIXED_IO_ps_clk => FIXED_IO_ps_clk,
       FIXED_IO_ps_porb => FIXED_IO_ps_porb,
       FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
-      Vaux0_0_v_n => Vaux0_0_v_n,
-      Vaux0_0_v_p => Vaux0_0_v_p,
       Vaux1_0_v_n => Vaux1_0_v_n,
       Vaux1_0_v_p => Vaux1_0_v_p,
+      Vaux9_0_v_n => Vaux9_0_v_n,
+      Vaux9_0_v_p => Vaux9_0_v_p,
       clk_sys => clk_sys,
       gpio_4btns_tri_i(3 downto 0) => gpio_4btns_tri_i(3 downto 0),
       gpio_lcd8_tri_o(7 downto 0) => gpio_lcd8_tri_o(7 downto 0),

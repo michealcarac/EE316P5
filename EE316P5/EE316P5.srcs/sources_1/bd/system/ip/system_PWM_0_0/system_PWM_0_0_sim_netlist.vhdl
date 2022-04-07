@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.1.3 (win64) Build 2644227 Wed Sep  4 09:45:24 MDT 2019
--- Date        : Tue Apr  5 17:12:50 2022
+-- Date        : Tue Apr  5 17:12:49 2022
 -- Host        : DESKTOP-0NNGBEI running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.srcs/sources_1/bd/system/ip/system_PWM_0_0/system_PWM_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top system_PWM_0_0 -prefix
+--               system_PWM_0_0_ system_PWM_0_0_sim_netlist.vhdl
 -- Design      : system_PWM_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -37,8 +37,6 @@ entity system_PWM_0_0_PWM_AXI is
     pwm_axi_araddr : in STD_LOGIC_VECTOR ( 4 downto 0 );
     pwm_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_PWM_0_0_PWM_AXI : entity is "PWM_AXI";
 end system_PWM_0_0_PWM_AXI;
 
 architecture STRUCTURE of system_PWM_0_0_PWM_AXI is
@@ -2989,8 +2987,6 @@ entity system_PWM_0_0_PWM_v2_0 is
     pwm_axi_bready : in STD_LOGIC;
     pwm_axi_rready : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of system_PWM_0_0_PWM_v2_0 : entity is "PWM_v2_0";
 end system_PWM_0_0_PWM_v2_0;
 
 architecture STRUCTURE of system_PWM_0_0_PWM_v2_0 is

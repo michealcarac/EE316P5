@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.1.3 (win64) Build 2644227 Wed Sep  4 09:45:24 MDT 2019
--- Date        : Tue Apr  5 17:15:09 2022
+-- Date        : Tue Apr  5 17:15:08 2022
 -- Host        : DESKTOP-0NNGBEI running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               c:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.srcs/sources_1/bd/system/ip/system_xbar_0/system_xbar_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top system_xbar_0 -prefix
+--               system_xbar_0_ system_xbar_0_stub.vhdl
 -- Design      : system_xbar_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z010clg400-1

@@ -35,7 +35,7 @@ set_property src_info {type:XDC file:1 line:52 export:INPUT save:INPUT read:READ
 set_property -dict { PACKAGE_PIN E17   IOSTANDARD LVCMOS33 } [get_ports { Vaux1_0_v_p }]; #IO_L3P_T0_DQS_AD1P_35 Sch=ck_an_p[0] #A0
 set_property src_info {type:XDC file:1 line:53 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN D18   IOSTANDARD LVCMOS33 } [get_ports { Vaux1_0_v_n }]; #IO_L3N_T0_DQS_AD1N_35 Sch=ck_an_n[0] #A0
-set_property src_info {type:XDC file:1 line:76 export:INPUT save:INPUT read:READ} [current_design]
-set_property -dict { PACKAGE_PIN C20   IOSTANDARD LVCMOS33 } [get_ports { Vaux0_0_v_p }]; #IO_L1P_T0_AD0P_35 Sch=ad_p[0]   #A6
-set_property src_info {type:XDC file:1 line:77 export:INPUT save:INPUT read:READ} [current_design]
-set_property -dict { PACKAGE_PIN B20   IOSTANDARD LVCMOS33 } [get_ports { Vaux0_0_v_n }]; #IO_L1N_T0_AD0N_35 Sch=ad_n[0]   #A6
+set_property src_info {type:XDC file:1 line:54 export:INPUT save:INPUT read:READ} [current_design]
+set_property -dict { PACKAGE_PIN E18   IOSTANDARD LVCMOS33 } [get_ports { Vaux9_0_v_p }]; #IO_L5P_T0_AD9P_35 Sch=ck_an_p[1]
+set_property src_info {type:XDC file:1 line:55 export:INPUT save:INPUT read:READ} [current_design]
+set_property -dict { PACKAGE_PIN E19   IOSTANDARD LVCMOS33 } [get_ports { Vaux9_0_v_n }]; #IO_L5N_T0_AD9N_35 Sch=ck_an_n[1]

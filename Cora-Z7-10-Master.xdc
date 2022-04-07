@@ -51,8 +51,8 @@ set_property -dict { PACKAGE_PIN W13   IOSTANDARD LVCMOS33 } [get_ports { gpio_l
 ## WARNING: Do not use both sets of constraints at the same time!
 set_property -dict { PACKAGE_PIN E17   IOSTANDARD LVCMOS33 } [get_ports { Vaux1_0_v_p }]; #IO_L3P_T0_DQS_AD1P_35 Sch=ck_an_p[0] #A0
 set_property -dict { PACKAGE_PIN D18   IOSTANDARD LVCMOS33 } [get_ports { Vaux1_0_v_n }]; #IO_L3N_T0_DQS_AD1N_35 Sch=ck_an_n[0] #A0
-#set_property -dict { PACKAGE_PIN E18   IOSTANDARD LVCMOS33 } [get_ports { vaux9_p }]; #IO_L5P_T0_AD9P_35 Sch=ck_an_p[1]
-#set_property -dict { PACKAGE_PIN E19   IOSTANDARD LVCMOS33 } [get_ports { vaux9_n }]; #IO_L5N_T0_AD9N_35 Sch=ck_an_n[1]
+set_property -dict { PACKAGE_PIN E18   IOSTANDARD LVCMOS33 } [get_ports { Vaux9_0_v_p }]; #IO_L5P_T0_AD9P_35 Sch=ck_an_p[1]
+set_property -dict { PACKAGE_PIN E19   IOSTANDARD LVCMOS33 } [get_ports { Vaux9_0_v_n }]; #IO_L5N_T0_AD9N_35 Sch=ck_an_n[1]
 #set_property -dict { PACKAGE_PIN K14   IOSTANDARD LVCMOS33 } [get_ports { vaux6_p }]; #IO_L20P_T3_AD6P_35 Sch=ck_an_p[2]
 #set_property -dict { PACKAGE_PIN J14   IOSTANDARD LVCMOS33 } [get_ports { vaux6_n }]; #IO_L20N_T3_AD6N_35 Sch=ck_an_n[2]
 #set_property -dict { PACKAGE_PIN K16   IOSTANDARD LVCMOS33 } [get_ports { vaux15_p }]; #IO_L24P_T3_AD15P_35 Sch=ck_an_p[3]
@@ -73,8 +73,8 @@ set_property -dict { PACKAGE_PIN D18   IOSTANDARD LVCMOS33 } [get_ports { Vaux1_
 ## ChipKit Inner Analog Header - as Differential Analog Inputs
 ## NOTE: These ports can be used as differential analog inputs with voltages from 0-1.0V (ChipKit analog pins A6-A11) or as digital I/O.
 ## WARNING: Do not use both sets of constraints at the same time!
-set_property -dict { PACKAGE_PIN C20   IOSTANDARD LVCMOS33 } [get_ports { Vaux0_0_v_p }]; #IO_L1P_T0_AD0P_35 Sch=ad_p[0]   #A6
-set_property -dict { PACKAGE_PIN B20   IOSTANDARD LVCMOS33 } [get_ports { Vaux0_0_v_n }]; #IO_L1N_T0_AD0N_35 Sch=ad_n[0]   #A6
+#set_property -dict { PACKAGE_PIN C20   IOSTANDARD LVCMOS33 } [get_ports { Vaux0_0_v_p }]; #IO_L1P_T0_AD0P_35 Sch=ad_p[0]   #A6
+#set_property -dict { PACKAGE_PIN B20   IOSTANDARD LVCMOS33 } [get_ports { Vaux0_0_v_n }]; #IO_L1N_T0_AD0N_35 Sch=ad_n[0]   #A6
 #set_property -dict { PACKAGE_PIN F19   IOSTANDARD LVCMOS33 } [get_ports { vaux12_p }]; #IO_L15P_T2_DQS_AD12P_35 Sch=ad_p[12]
 #set_property -dict { PACKAGE_PIN F20   IOSTANDARD LVCMOS33 } [get_ports { vaux12_n }]; #IO_L15N_T2_DQS_AD12N_35 Sch=ad_n[12]
 #set_property -dict { PACKAGE_PIN B19   IOSTANDARD LVCMOS33 } [get_ports { vaux8_p }]; #IO_L2P_T0_AD8P_35 Sch=ad_p[8]

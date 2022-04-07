@@ -2,15 +2,14 @@
 # Vivado v2019.1.3 (64-bit)
 # SW Build 2644227 on Wed Sep  4 09:45:24 MDT 2019
 # IP Build 2633630 on Wed Sep  4 12:30:14 MDT 2019
-# Start of session at: Tue Apr  5 17:11:03 2022
-# Process ID: 14996
+# Start of session at: Thu Apr  7 01:09:44 2022
+# Process ID: 11684
 # Current directory: C:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.runs/system_xadc_wiz_0_0_synth_1
 # Command line: vivado.exe -log system_xadc_wiz_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source system_xadc_wiz_0_0.tcl
 # Log file: C:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.runs/system_xadc_wiz_0_0_synth_1/system_xadc_wiz_0_0.vds
 # Journal file: C:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.runs/system_xadc_wiz_0_0_synth_1\vivado.jou
 #-----------------------------------------------------------
 source system_xadc_wiz_0_0.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 377.590 ; gain = 87.398
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/sixpe/Documents/college/EE316P5/IPRepo'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.1/data/ip'.
@@ -20,9 +19,9 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Device 21-403] Loading part xc7z010clg400-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 9772 
+INFO: Helper process launched with PID 21736 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 826.293 ; gain = 176.672
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 827.738 ; gain = 177.191
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'system_xadc_wiz_0_0' [c:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.srcs/sources_1/bd/system/ip/system_xadc_wiz_0_0/system_xadc_wiz_0_0.vhd:107]
 	Parameter C_INSTANCE bound to: system_xadc_wiz_0_0_axi_xadc - type: string 
@@ -254,7 +253,7 @@ INFO: [Synth 8-638] synthesizing module 'system_xadc_wiz_0_0_xadc_core_drp' [c:/
 	Parameter INIT_46 bound to: 16'b0000000000000000 
 	Parameter INIT_47 bound to: 16'b0000000000000000 
 	Parameter INIT_48 bound to: 16'b0000100000000000 
-	Parameter INIT_49 bound to: 16'b0000000000000011 
+	Parameter INIT_49 bound to: 16'b0000001000000010 
 	Parameter INIT_4A bound to: 16'b0000000000000000 
 	Parameter INIT_4B bound to: 16'b0000000000000000 
 	Parameter INIT_4C bound to: 16'b0000000000000000 
@@ -519,7 +518,7 @@ WARNING: [Synth 8-3331] design system_xadc_wiz_0_0_xadc_core_drp has unconnected
 WARNING: [Synth 8-3331] design system_xadc_wiz_0_0_xadc_core_drp has unconnected port Bus2IP_Data[10]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:01:14 ; elapsed = 00:01:16 . Memory (MB): peak = 939.234 ; gain = 289.613
+Finished RTL Elaboration : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 942.992 ; gain = 292.445
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -532,10 +531,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:14 ; elapsed = 00:01:17 . Memory (MB): peak = 939.234 ; gain = 289.613
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:42 ; elapsed = 00:00:42 . Memory (MB): peak = 942.992 ; gain = 292.445
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:14 ; elapsed = 00:01:17 . Memory (MB): peak = 939.234 ; gain = 289.613
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:42 ; elapsed = 00:00:42 . Memory (MB): peak = 942.992 ; gain = 292.445
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 18 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -551,28 +550,28 @@ Parsing XDC File [C:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.runs/
 Finished Parsing XDC File [C:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.runs/system_xadc_wiz_0_0_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1046.961 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1016.699 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 17 instances were transformed.
   FDRSE => FDRSE (FDRE, LUT4, VCC): 17 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.070 . Memory (MB): peak = 1050.457 ; gain = 3.496
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.056 . Memory (MB): peak = 1027.414 ; gain = 10.715
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:01:29 ; elapsed = 00:01:32 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Finished Constraint Validation : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 1027.414 ; gain = 376.867
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:01:29 ; elapsed = 00:01:32 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 1027.414 ; gain = 376.867
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property DONT_TOUCH = true for U0. (constraint file  C:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.runs/system_xadc_wiz_0_0_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:29 ; elapsed = 00:01:32 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 1027.414 ; gain = 376.867
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'system_xadc_wiz_0_0_slave_attachment'
 ---------------------------------------------------------------------------------------------------
@@ -585,7 +584,7 @@ INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'syste
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'system_xadc_wiz_0_0_slave_attachment'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:31 ; elapsed = 00:01:34 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:52 ; elapsed = 00:00:53 . Memory (MB): peak = 1027.414 ; gain = 376.867
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -828,7 +827,7 @@ INFO: [Synth 8-3886] merging instance 'U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_a
 INFO: [Synth 8-3886] merging instance 'U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[29]' (FDRE) to 'U0/AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_rdata_i_reg[30]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/\AXI_LITE_IPIF_I/I_SLAVE_ATTACHMENT/s_axi_bresp_i_reg[0] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:37 ; elapsed = 00:01:40 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:55 ; elapsed = 00:00:56 . Memory (MB): peak = 1027.414 ; gain = 376.867
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -840,13 +839,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:54 ; elapsed = 00:01:58 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1027.414 ; gain = 376.867
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:56 ; elapsed = 00:02:00 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Finished Timing Optimization : Time (s): cpu = 00:01:07 ; elapsed = 00:01:09 . Memory (MB): peak = 1030.199 ; gain = 379.652
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -858,7 +857,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:57 ; elapsed = 00:02:01 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Finished Technology Mapping : Time (s): cpu = 00:01:08 ; elapsed = 00:01:09 . Memory (MB): peak = 1030.199 ; gain = 379.652
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -882,7 +881,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:02 ; elapsed = 00:02:06 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Finished IO Insertion : Time (s): cpu = 00:01:11 ; elapsed = 00:01:12 . Memory (MB): peak = 1031.766 ; gain = 381.219
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -895,7 +894,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:02 ; elapsed = 00:02:06 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:11 ; elapsed = 00:01:12 . Memory (MB): peak = 1031.766 ; gain = 381.219
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -907,25 +906,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:02 ; elapsed = 00:02:06 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:11 ; elapsed = 00:01:12 . Memory (MB): peak = 1031.766 ; gain = 381.219
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:02:02 ; elapsed = 00:02:06 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:11 ; elapsed = 00:01:12 . Memory (MB): peak = 1031.766 ; gain = 381.219
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:02 ; elapsed = 00:02:06 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:11 ; elapsed = 00:01:12 . Memory (MB): peak = 1031.766 ; gain = 381.219
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:02:02 ; elapsed = 00:02:06 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:11 ; elapsed = 00:01:12 . Memory (MB): peak = 1031.766 ; gain = 381.219
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -966,34 +965,34 @@ Report Instance Areas:
 |8     |    SOFT_RESET_I                           |system_xadc_wiz_0_0_soft_reset        |    36|
 +------+-------------------------------------------+--------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:02 ; elapsed = 00:02:06 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:11 ; elapsed = 00:01:12 . Memory (MB): peak = 1031.766 ; gain = 381.219
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 16 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:43 ; elapsed = 00:02:01 . Memory (MB): peak = 1050.457 ; gain = 289.613
-Synthesis Optimization Complete : Time (s): cpu = 00:02:03 ; elapsed = 00:02:07 . Memory (MB): peak = 1050.457 ; gain = 400.836
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:26 ; elapsed = 00:01:09 . Memory (MB): peak = 1031.766 ; gain = 296.797
+Synthesis Optimization Complete : Time (s): cpu = 00:01:11 ; elapsed = 00:01:12 . Memory (MB): peak = 1031.766 ; gain = 381.219
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1050.457 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1043.871 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
 142 Infos, 101 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:02:15 ; elapsed = 00:02:33 . Memory (MB): peak = 1050.457 ; gain = 643.027
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1050.457 ; gain = 0.000
+synth_design: Time (s): cpu = 00:01:18 ; elapsed = 00:01:34 . Memory (MB): peak = 1043.871 ; gain = 634.750
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1043.871 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.runs/system_xadc_wiz_0_0_synth_1/system_xadc_wiz_0_0.dcp' has been generated.
 WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP system_xadc_wiz_0_0, cache-ID = 7f51a1822a4c2f28
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP system_xadc_wiz_0_0, cache-ID = 06bf4a5b66d6060a
 INFO: [Coretcl 2-1174] Renamed 7 cell refs.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1050.457 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1043.871 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.runs/system_xadc_wiz_0_0_synth_1/system_xadc_wiz_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file system_xadc_wiz_0_0_utilization_synth.rpt -pb system_xadc_wiz_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Apr  5 17:13:57 2022...
+INFO: [Common 17-206] Exiting Vivado at Thu Apr  7 01:11:30 2022...

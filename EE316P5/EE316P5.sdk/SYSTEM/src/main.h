@@ -14,24 +14,22 @@
 
 /************************** Constant Definitions *****************************/
 /* PWM/Timer Usage */
-#define TMRCTR_PWM_DEVICE_ID    XPAR_TMRCTR_0_DEVICE_ID
-#define TMRCTR_DEVICE_ID        XPAR_TMRCTR_1_DEVICE_ID
+#define TMRCTR_PWM_DEVICE_ID    XPAR_TMRCTR_0_DEVICE_ID // Timer device 1
+#define TMRCTR_DEVICE_ID        XPAR_TMRCTR_1_DEVICE_ID // Timer device 2
 #define TIMER_PWM_PERIOD        3125000  // 25ms
 #define PWM_PERIOD              2500000  // 20ms
 #define PWM_index               0        // 0 index
+#define SERVO_MAX_PERCENT 		0.125    // For Servo 45
+#define SERVO_MIN_PERCENT 		0.025    // For Servo -45
+#define PWM_DUTY_MULTIPLIER 	PWM_PERIOD*(SERVO_MAX_PERCENT-SERVO_MIN_PERCENT)  // For Servo
+#define PWM_DUTY_OFFSET     	PWM_PERIOD*SERVO_MIN_PERCENT                      // For Servo
 /* ADC Usage */
-#define XADC_DEVICE_ID XPAR_XADC_WIZ_0_DEVICE_ID  // ADC 0
-#define ADC_MAXIMUM_VOLTAGE 3.3
-//#define XADC_SEQ_CHANNELS 0x3
-//#define XADC_CHANNELS 0x3
-//#define NUMBER_OF_CHANNELS 2
-#define XADC_SEQ_CHANNELS 0xB3630800
-#define XADC_CHANNELS 0xB3630008
-#define NUMBER_OF_CHANNELS 10
-#define Test_Bit(VEC,BIT) ((VEC&(1<<BIT))!=0)
+#define XADC_DEVICE_ID 			XPAR_XADC_WIZ_0_DEVICE_ID  // ADC 0
+#define ADC_MAXIMUM_VOLTAGE 	3.3
+#define NUMBER_OF_CHANNELS 		16
 /* GPIO Usage */
-#define BTN_DEVICE_ID XPAR_AXI_GPIO_0_DEVICE_ID   // GPIO 0
-#define LCD_DEVICE_ID XPAR_AXI_GPIO_1_DEVICE_ID   // GPIO 1
+#define BTN_DEVICE_ID 			XPAR_AXI_GPIO_0_DEVICE_ID   // GPIO 0
+#define LCD_DEVICE_ID 			XPAR_AXI_GPIO_1_DEVICE_ID   // GPIO 1
 /* From Custom IP Core */
 void PWM_Config(int period, int duty, int pwmIndex);
 /* From Timer */
@@ -39,9 +37,9 @@ void timerPWM_Init(XTmrCtr *InstancePtr);
 void timerPWM_Config(XTmrCtr *InstancePtr, int period, int duty);
 /* From ADC */
 void Xadc_Init(XSysMon *InstancePtr, u32 DeviceId);
-u32 Xadc_ReadData (XSysMon *InstancePtr, u16 RawData[32]);
+u32 Xadc_ReadRaw (XSysMon *InstancePtr,u16 channelSel);
 float Xadc_RawToVoltage(u16 Data);
-u16 Xadc_Read(XSysMon *InstancePtr, u32 ChannelSelect);
+float Xadc_ReadConverted(XSysMon *InstancePtr, u32 ChannelSelect);
 /* From Buttons */
 void Btn_Init(XGpio *InstancePtr, u32 DeviceId);
 

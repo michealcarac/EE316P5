@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.1.3 (win64) Build 2644227 Wed Sep  4 09:45:24 MDT 2019
--- Date        : Tue Apr  5 17:13:57 2022
+-- Date        : Thu Apr  7 01:11:30 2022
 -- Host        : DESKTOP-0NNGBEI running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.srcs/sources_1/bd/system/ip/system_xadc_wiz_0_0/system_xadc_wiz_0_0_sim_netlist.vhdl
@@ -3479,7 +3479,7 @@ XADC_INST: unisim.vcomponents.XADC
       INIT_46 => X"0000",
       INIT_47 => X"0000",
       INIT_48 => X"0800",
-      INIT_49 => X"0003",
+      INIT_49 => X"0202",
       INIT_4A => X"0000",
       INIT_4B => X"0000",
       INIT_4C => X"0000",
@@ -3531,10 +3531,16 @@ XADC_INST: unisim.vcomponents.XADC
       MUXADDR(4 downto 0) => NLW_XADC_INST_MUXADDR_UNCONNECTED(4 downto 0),
       OT => \^s_axi_aclk_0\(0),
       RESET => RESET,
-      VAUXN(15 downto 2) => B"00000000000000",
-      VAUXN(1 downto 0) => VAUXN(1 downto 0),
-      VAUXP(15 downto 2) => B"00000000000000",
-      VAUXP(1 downto 0) => VAUXP(1 downto 0),
+      VAUXN(15 downto 10) => B"000000",
+      VAUXN(9) => VAUXN(1),
+      VAUXN(8 downto 2) => B"0000000",
+      VAUXN(1) => VAUXN(0),
+      VAUXN(0) => '0',
+      VAUXP(15 downto 10) => B"000000",
+      VAUXP(9) => VAUXP(1),
+      VAUXP(8 downto 2) => B"0000000",
+      VAUXP(1) => VAUXP(0),
+      VAUXP(0) => '0',
       VN => vn_in,
       VP => vp_in
     );
@@ -5275,10 +5281,10 @@ entity system_xadc_wiz_0_0_system_xadc_wiz_0_0_axi_xadc is
     s_axi_rvalid : out STD_LOGIC;
     s_axi_rready : in STD_LOGIC;
     ip2intc_irpt : out STD_LOGIC;
-    vauxp0 : in STD_LOGIC;
-    vauxn0 : in STD_LOGIC;
     vauxp1 : in STD_LOGIC;
     vauxn1 : in STD_LOGIC;
+    vauxp9 : in STD_LOGIC;
+    vauxn9 : in STD_LOGIC;
     busy_out : out STD_LOGIC;
     channel_out : out STD_LOGIC_VECTOR ( 4 downto 0 );
     eoc_out : out STD_LOGIC;
@@ -5623,10 +5629,10 @@ AXI_XADC_CORE_I: entity work.system_xadc_wiz_0_0_system_xadc_wiz_0_0_xadc_core_d
       \INTR_CTRLR_GEN_I.ip2bus_error_reg_0\ => \INTR_CTRLR_GEN_I.ip2bus_error_i_3_n_0\,
       Q(8 downto 1) => \^alarm_out\(7 downto 0),
       Q(0) => alarm_reg(0),
-      VAUXN(1) => vauxn1,
-      VAUXN(0) => vauxn0,
-      VAUXP(1) => vauxp1,
-      VAUXP(0) => vauxp0,
+      VAUXN(1) => vauxn9,
+      VAUXN(0) => vauxn1,
+      VAUXP(1) => vauxp9,
+      VAUXP(0) => vauxp1,
       bus2ip_rdce(1) => bus2ip_rdce(23),
       bus2ip_rdce(0) => bus2ip_rdce(0),
       bus2ip_reset_active_high => bus2ip_reset_active_high,
@@ -6120,10 +6126,10 @@ entity system_xadc_wiz_0_0 is
     s_axi_rvalid : out STD_LOGIC;
     s_axi_rready : in STD_LOGIC;
     ip2intc_irpt : out STD_LOGIC;
-    vauxp0 : in STD_LOGIC;
-    vauxn0 : in STD_LOGIC;
     vauxp1 : in STD_LOGIC;
     vauxn1 : in STD_LOGIC;
+    vauxp9 : in STD_LOGIC;
+    vauxn9 : in STD_LOGIC;
     busy_out : out STD_LOGIC;
     channel_out : out STD_LOGIC_VECTOR ( 4 downto 0 );
     eoc_out : out STD_LOGIC;
@@ -6199,10 +6205,10 @@ U0: entity work.system_xadc_wiz_0_0_system_xadc_wiz_0_0_axi_xadc
       s_axi_wready => s_axi_wready,
       s_axi_wstrb(3 downto 0) => s_axi_wstrb(3 downto 0),
       s_axi_wvalid => s_axi_wvalid,
-      vauxn0 => vauxn0,
       vauxn1 => vauxn1,
-      vauxp0 => vauxp0,
+      vauxn9 => vauxn9,
       vauxp1 => vauxp1,
+      vauxp9 => vauxp9,
       vn_in => vn_in,
       vp_in => vp_in
     );

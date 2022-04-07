@@ -12,11 +12,17 @@ XGpio LCD;                 /* The instance of the LCD GPIO */
 int main(void)
 {
 	/* Initialize Variables */
-	u8 ChannelIndex = 0;  /* Select ADC Channel */
-	u16 duty_ADC = 0;
-	u32 Btn_Data;         /* Initialize Button Data */
+	//u8 ChannelIndex = 0;  /* Select ADC Channel */
+	float ADC_Val = 0;
+	u32 PWM_Servo = 0;
+	u32 PWM_Timer = 0;
+	//u32 Btn_Data;         /* Initialize Button Data */
+	//Debounce Btn0_Db, Btn1_Db, Btn2_Db, Btn3_Db;  /* Type of Debounce */
+	/* Case Statements */
+	int FSM_State = 1;
+	int sys_en    = 1;
+	/* Incrementors */
 	u32 time_count = 0;  /* Counter for ADC, will be switched to a delay from timer interrupts */
-	Debounce Btn0_Db, Btn1_Db, Btn2_Db, Btn3_Db;  /* Type of Debounce */
 
 	/* ADC and Button Init */
 	Xadc_Init(&Xadc, XADC_DEVICE_ID);
@@ -26,27 +32,64 @@ int main(void)
 //	Debounce_Init(&Btn2_Db, 10000);
 //	Debounce_Init(&Btn3_Db, 10000);
 	/* Timer/PWM Init */
-//	timerPWM_Init(&TimerPWMInst);   //Initialize Timer PWM
-//	timerPWM_Config(&TimerPWMInst,TIMER_PWM_PERIOD,TIMER_PWM_PERIOD/2); //Initialized to 50% duty
-	PWM_Config(PWM_PERIOD,PWM_PERIOD/2,0); //Initialized to 50% duty
-	printf("test\n\r");
+	timerPWM_Init(&TimerPWMInst);   //Initialize Timer PWM
+	timerPWM_Config(&TimerPWMInst,TIMER_PWM_PERIOD,0); //Initialized to 0% duty
+	PWM_Config(PWM_PERIOD,0,0); //Initialized to 0% duty
+
 	/* While loop */
 	while(1){
-		if (time_count == 100000) { // print channel reading approx. 10x per second
-			time_count = 0;
-			duty_ADC = Xadc_Read(&Xadc,17); //Grab ADC Value of channel 0
-			duty_ADC = PWM_PERIOD * duty_ADC/ADC_MAXIMUM_VOLTAGE;
-		}
-		PWM_Config(PWM_PERIOD,ceil(duty_ADC),0); //Set Duty Cycle
-		//printf("duty_adc: %d \n\r",ceil(duty_ADC));
-		//printf("PWM Duty: %d, PWM Period: %d \n\r",PWM_Get_Duty(XPAR_PWM_0_PWM_AXI_BASEADDR,PWM_index),PWM_PERIOD);
+		switch(sys_en) {
+			case 0:
+				/* System Disabled State */
+				printf("SYSTEM DISABLED \n\r");
+				/* Reset variables */
+				FSM_State = 0;
+				/* Reset Peripherals */
+				timerPWM_Config(&TimerPWMInst,TIMER_PWM_PERIOD,0); //Initialized to 0% duty
+				PWM_Config(PWM_PERIOD,0,0); //Initialized to 0% duty
 
-		time_count ++;
-		usleep(1);
+				usleep(100000);
+				break;
+			case 1:
+				/* System Enabled State */
+				if (time_count == 100000) { // print channel reading approx. 10x per second
+					time_count = 0;
+					switch(FSM_State) {
+						case 0:
+							ADC_Val = Xadc_ReadConverted(&Xadc,1); //Grab ADC Value of channel 1
+							printf("ADC Value (A0): %.3f \n\r",ADC_Val);
+							break;
+						case 1:
+							ADC_Val = Xadc_ReadConverted(&Xadc,9); //Grab ADC Value of channel 9
+							printf("ADC Value (A1): %.3f \n\r",ADC_Val);
+							break;
+					}
+
+					/* Custom PWM Core */
+					/* This will be running a servo from 2.5% to 12.5% duty */
+					PWM_Servo = (u32)(((ADC_Val/ADC_MAXIMUM_VOLTAGE)*PWM_DUTY_MULTIPLIER)+PWM_DUTY_OFFSET); // 2.5% to 12.5% period
+					PWM_Config(PWM_PERIOD,PWM_Servo,0); //Set Duty Cycle
+					printf("PWM Servo Duty: %lu      %.2f%%\n\r", PWM_Servo,100*((float)PWM_Servo/PWM_PERIOD));
+
+					/* Timer PWM Core */
+					/* This will be running the LEDs, DC Motor, Passive Buzzer */
+					PWM_Timer = (u32)((ADC_Val/ADC_MAXIMUM_VOLTAGE)*TIMER_PWM_PERIOD); // 0 to max period
+					timerPWM_Config(&TimerPWMInst,TIMER_PWM_PERIOD, PWM_Timer);
+					printf("Timer PWM Duty: %lu     %.2f%%\n\r", PWM_Timer,100*((float)PWM_Timer/TIMER_PWM_PERIOD));
+
+					/* LCD Function Calls */
+					/* LCD Enable */
+					/* LCD Data Send */
+				}
+				time_count++;
+				usleep(1);
+				break;
+		}
+
 	}
 
 }
-//printf("Timer PWM Duty: %d, PWM Period: %d \n\r",duty_ADC,TIMER_PWM_PERIOD);
+
 
 
 

@@ -83,10 +83,10 @@ entity system_xadc_wiz_0_0 is
                                                                                 
    -- Input to the system from the axi_xadc core
     ip2intc_irpt    : out std_logic;
-    vauxp0          : in  STD_LOGIC;                         -- Auxiliary Channel 0
-    vauxn0          : in  STD_LOGIC;
     vauxp1          : in  STD_LOGIC;                         -- Auxiliary Channel 1
     vauxn1          : in  STD_LOGIC;
+    vauxp9          : in  STD_LOGIC;                         -- Auxiliary Channel 9
+    vauxn9          : in  STD_LOGIC;
     busy_out        : out  STD_LOGIC;                        -- ADC Busy signal
     channel_out     : out  STD_LOGIC_VECTOR (4 downto 0);    -- Channel Selection Outputs
     eoc_out         : out  STD_LOGIC;                        -- End of Conversion Signal
@@ -160,10 +160,10 @@ architecture xilinx of system_xadc_wiz_0_0 is
    -- XADC External interface signals
 
     -- Conversion start control signal for Event driven mode
-    vauxp0          : in  STD_LOGIC;                         -- Auxiliary Channel 0
-    vauxn0          : in  STD_LOGIC;
     vauxp1          : in  STD_LOGIC;                         -- Auxiliary Channel 1
     vauxn1          : in  STD_LOGIC;
+    vauxp9          : in  STD_LOGIC;                         -- Auxiliary Channel 9
+    vauxn9          : in  STD_LOGIC;
     busy_out        : out  STD_LOGIC;                        -- ADC Busy signal
     channel_out     : out  STD_LOGIC_VECTOR (4 downto 0);    -- Channel Selection Outputs
     eoc_out         : out  STD_LOGIC;                        -- End of Conversion Signal
@@ -219,10 +219,10 @@ begin
     s_axi_rvalid    => s_axi_rvalid,                    
     s_axi_rready    => s_axi_rready,                    
     ip2intc_irpt    => ip2intc_irpt,  
-    vauxp0 => vauxp0,
-    vauxn0 => vauxn0,
     vauxp1 => vauxp1,
     vauxn1 => vauxn1,
+    vauxp9 => vauxp9,
+    vauxn9 => vauxn9,
     busy_out => busy_out,
     channel_out => channel_out,
     eoc_out => eoc_out,
