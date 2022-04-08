@@ -29,22 +29,22 @@ void LCD_init(void) {
 
 
 void LCD_nibble_write(char data, unsigned char control) {
-	data &= 0xF0;
-	control &= 0x0F;
+	//data &= 0xF0;
+	//control &= 0x0F;
     /* populate data bits */
 	Xil_Out32(LCD_GPIO, data | control);
-	usleep(100);
+	usleep(0);
 	Xil_Out32(LCD_GPIO, data | control | EN);
-	usleep(100);
+	usleep(0);
 	Xil_Out32(LCD_GPIO, data | control);
-	usleep(100);
+	usleep(0);
 	//Xil_Out32(LCD_GPIO, 0);
 
 }
 
 void LCD_command(unsigned char command) {
-    LCD_nibble_write(command & 0xF0, 0);    /* upper nibble first */
-    LCD_nibble_write(command << 4, 0);      /* then lower nibble */
+    LCD_nibble_write(command >>4 , 0);    /* upper nibble first */
+    LCD_nibble_write(command & 0xF, 0);      /* then lower nibble */
 
     if (command < 4)
         usleep(4*1000);         /* command 1 and 2 needs up to 1.64ms */
@@ -53,8 +53,15 @@ void LCD_command(unsigned char command) {
 }
 
 void LCD_data(char data) {
-    LCD_nibble_write(data & 0xF0, RS);      /* upper nibble first */
-    LCD_nibble_write(data << 4, RS);        /* then lower nibble */
+    LCD_nibble_write(data >>4 , RS);      /* upper nibble first */
+    LCD_nibble_write(data & 0xF, RS);        /* then lower nibble */
 
     usleep(1*1000);
+}
+
+void LCD_data_ln(char* string){
+	while(*string){
+		LCD_data(*string++ & 0xFF);
+	}
+
 }

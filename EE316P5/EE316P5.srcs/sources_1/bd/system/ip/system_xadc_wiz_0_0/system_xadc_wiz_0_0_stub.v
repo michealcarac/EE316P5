@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.1.3 (win64) Build 2644227 Wed Sep  4 09:45:24 MDT 2019
-// Date        : Thu Apr  7 01:11:30 2022
+// Date        : Thu Apr  7 01:11:29 2022
 // Host        : DESKTOP-0NNGBEI running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               c:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.srcs/sources_1/bd/system/ip/system_xadc_wiz_0_0/system_xadc_wiz_0_0_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top system_xadc_wiz_0_0 -prefix
+//               system_xadc_wiz_0_0_ system_xadc_wiz_0_0_stub.v
 // Design      : system_xadc_wiz_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z010clg400-1

@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.1.3 (win64) Build 2644227 Wed Sep  4 09:45:24 MDT 2019
-| Date             : Thu Apr  7 01:15:38 2022
+| Date             : Fri Apr  8 18:29:20 2022
 | Host             : DESKTOP-0NNGBEI running 64-bit major release  (build 9200)
 | Command          : report_power -file system_wrapper_power_routed.rpt -pb system_wrapper_power_summary_routed.pb -rpx system_wrapper_power_routed.rpx
 | Design           : system_wrapper
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.502        |
+| Total On-Chip Power (W)  | 1.501        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.382        |
+| Dynamic (W)              | 1.381        |
 | Device Static (W)        | 0.120        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 67.7         |
@@ -52,20 +52,20 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.010 |        9 |       --- |             --- |
+| Clocks                  |     0.009 |        9 |       --- |             --- |
 | Slice Logic             |     0.004 |     4316 |       --- |             --- |
 |   LUT as Logic          |     0.004 |     1556 |     17600 |            8.84 |
 |   CARRY4                |    <0.001 |      130 |      4400 |            2.95 |
 |   Register              |    <0.001 |     1867 |     35200 |            5.30 |
 |   LUT as Shift Register |    <0.001 |       62 |      6000 |            1.03 |
 |   Others                |     0.000 |      324 |       --- |             --- |
-| Signals                 |     0.006 |     3000 |       --- |             --- |
+| Signals                 |     0.005 |     2993 |       --- |             --- |
 | MMCM                    |     0.106 |        1 |         2 |           50.00 |
-| I/O                     |    <0.001 |       20 |       100 |           20.00 |
+| I/O                     |    <0.001 |       21 |       100 |           21.00 |
 | XADC                    |     0.002 |        1 |       --- |             --- |
 | PS7                     |     1.253 |        1 |       --- |             --- |
 | Static Power            |     0.120 |          |           |                 |
-| Total                   |     1.502 |          |           |                 |
+| Total                   |     1.501 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,7 +75,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.028 |       0.021 |      0.006 |
+| Vccint    |       1.000 |     0.027 |       0.021 |      0.006 |
 | Vccaux    |       1.800 |     0.066 |       0.059 |      0.008 |
 | Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -156,12 +156,12 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| system_wrapper           |     1.382 |
-|   system_i               |     1.382 |
+| system_wrapper           |     1.381 |
+|   system_i               |     1.381 |
 |     PWM_0                |     0.001 |
 |       inst               |     0.001 |
-|     axi_timer_0          |     0.005 |
-|       U0                 |     0.005 |
+|     axi_timer_0          |     0.004 |
+|       U0                 |     0.004 |
 |     axi_timer_1          |     0.004 |
 |       U0                 |     0.004 |
 |     clk_wiz_0            |     0.107 |
@@ -169,7 +169,7 @@ Table of Contents
 |     processing_system7_0 |     1.254 |
 |       inst               |     1.254 |
 |     ps7_0_axi_periph     |     0.005 |
-|       s00_couplers       |     0.005 |
+|       s00_couplers       |     0.004 |
 |     xadc_wiz_0           |     0.004 |
 |       U0                 |     0.004 |
 +--------------------------+-----------+

@@ -13,7 +13,6 @@
 #include "math.h"
 #include "xgpio.h"
 #include "xil_types.h"
-#include "debounce.h"
 
 /************************** Constant Definitions *****************************/
 /* PWM/Timer Usage */
@@ -68,6 +67,7 @@ void LCD_nibble_write(char data, unsigned char control);
 void LCD_command(unsigned char command);
 void LCD_data(char data);
 void LCD_init(void);
+void LCD_data_ln(char* string);
 /* Interrupts */
 int Int_Init(XScuGic *IntInstancePtr, XGpio *GpioInstancePtr, u32 IntDeviceId, u32 GpioDeviceId);
 int Int_Connect_to_GPIO(XScuGic *IntInstancePtr, XGpio *GpioInstancePtr, u32 IntDeviceId, u32 GpioDeviceId);

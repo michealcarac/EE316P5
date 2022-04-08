@@ -1,7 +1,7 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2019.1.3 (win64) Build 2644227 Wed Sep  4 09:45:24 MDT 2019
---Date        : Thu Apr  7 01:08:46 2022
+--Date        : Fri Apr  8 18:20:11 2022
 --Host        : DESKTOP-0NNGBEI running 64-bit major release  (build 9200)
 --Command     : generate_target system.bd
 --Design      : system
@@ -2046,6 +2046,7 @@ entity system is
     clk_sys : in STD_LOGIC;
     gpio_4btns_tri_i : in STD_LOGIC_VECTOR ( 3 downto 0 );
     gpio_lcd8_tri_o : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    led0_g : out STD_LOGIC;
     pwm_motor : out STD_LOGIC_VECTOR ( 0 to 0 );
     pwm_o : out STD_LOGIC;
     reset : in STD_LOGIC
@@ -2562,6 +2563,8 @@ architecture STRUCTURE of system is
   attribute X_INTERFACE_INFO of Vaux9_0_v_p : signal is "xilinx.com:interface:diff_analog_io:1.0 Vaux9_0 V_P";
   attribute X_INTERFACE_INFO of clk_sys : signal is "xilinx.com:signal:clock:1.0 CLK.CLK_SYS CLK";
   attribute X_INTERFACE_PARAMETER of clk_sys : signal is "XIL_INTERFACENAME CLK.CLK_SYS, ASSOCIATED_RESET reset, CLK_DOMAIN system_clk_sys, FREQ_HZ 125000000, INSERT_VIP 0, PHASE 0.000";
+  attribute X_INTERFACE_INFO of led0_g : signal is "xilinx.com:signal:data:1.0 DATA.LED0_G DATA";
+  attribute X_INTERFACE_PARAMETER of led0_g : signal is "XIL_INTERFACENAME DATA.LED0_G, LAYERED_METADATA undef";
   attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
   attribute X_INTERFACE_PARAMETER of reset : signal is "XIL_INTERFACENAME RST.RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
   attribute X_INTERFACE_INFO of DDR_addr : signal is "xilinx.com:interface:ddrx:1.0 DDR ADDR";
@@ -2572,8 +2575,8 @@ architecture STRUCTURE of system is
   attribute X_INTERFACE_INFO of DDR_dqs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_N";
   attribute X_INTERFACE_INFO of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
   attribute X_INTERFACE_INFO of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
-  attribute X_INTERFACE_INFO of gpio_4btns_tri_i : signal is "xilinx.com:interface:gpio:1.0 gpio_4btns ";
-  attribute X_INTERFACE_INFO of gpio_lcd8_tri_o : signal is "xilinx.com:interface:gpio:1.0 gpio_lcd8 ";
+  attribute X_INTERFACE_INFO of gpio_4btns_tri_i : signal is "xilinx.com:interface:gpio:1.0 gpio_4btns TRI_I";
+  attribute X_INTERFACE_INFO of gpio_lcd8_tri_o : signal is "xilinx.com:interface:gpio:1.0 gpio_lcd8 TRI_O";
 begin
   Vaux1_0_1_V_N <= Vaux1_0_v_n;
   Vaux1_0_1_V_P <= Vaux1_0_v_p;
@@ -2582,6 +2585,7 @@ begin
   axi_gpio_0_GPIO_TRI_I(3 downto 0) <= gpio_4btns_tri_i(3 downto 0);
   clk_in1_0_1 <= clk_sys;
   gpio_lcd8_tri_o(7 downto 0) <= axi_gpio_1_GPIO_TRI_O(7 downto 0);
+  led0_g <= axi_timer_0_pwm0;
   pwm_motor(0) <= PWM_0_pwm(0);
   pwm_o <= axi_timer_0_pwm0;
   reset_1 <= reset;

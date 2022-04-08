@@ -52,6 +52,8 @@ int main(void)
 				timerPWM_Config(&TimerPWMInst,TIMER_PWM_PERIOD,0); //Initialized to 0% duty
 				PWM_Config(PWM_PERIOD,0,0); //Initialized to 0% duty
 
+				LCD_command(1);
+				LCD_data_ln("Reset/Disabled");
 				usleep(100000);
 				break;
 			case 1:
@@ -62,10 +64,18 @@ int main(void)
 						case 0:
 							ADC_Val = Xadc_ReadConverted(&Xadc,1); //Grab ADC Value of channel 1
 							printf("ADC Value (A0): %.3f \n\r",ADC_Val);
+							LCD_command(1);
+							LCD_data_ln("    Enabled");
+							LCD_command(0xC0);
+							LCD_data_ln(" Photoresistor");
 							break;
 						case 1:
 							ADC_Val = Xadc_ReadConverted(&Xadc,9); //Grab ADC Value of channel 9
 							printf("ADC Value (A1): %.3f \n\r",ADC_Val);
+							LCD_command(1);
+							LCD_data_ln("    Enabled");
+							LCD_command(0xC0);
+							LCD_data_ln(" Potentiometer");
 							break;
 					}
 
@@ -81,20 +91,6 @@ int main(void)
 					timerPWM_Config(&TimerPWMInst,TIMER_PWM_PERIOD, PWM_Timer);
 					printf("Timer PWM Duty: %lu     %.2f%%\n\r", PWM_Timer,100*((float)PWM_Timer/TIMER_PWM_PERIOD));
 
-					/* LCD Function Calls */
-					/* LCD Enable */
-					/* LCD Data Send */
-					printf("Writing to LCD\n\r");
-					LCD_data('H');
-					LCD_data('E');
-					LCD_data('L');
-					LCD_data('L');
-					LCD_data('O');
-					usleep(1000*1000);
-
-					/* clear LCD display */
-					LCD_command(1);
-					usleep(1000*1000);
 				}
 				time_count++;
 				usleep(1);
@@ -108,7 +104,7 @@ int main(void)
 void Gpio_Intr_Handler(void *InstancePtr)
 {
 	int btn_value = 0;
-	int prev_button = 0;
+	int prev_button;
 
 	// Disable GPIO interrupts
 	XGpio_InterruptDisable(&GpioBtn, XGPIO_IR_CH1_MASK);
@@ -117,7 +113,6 @@ void Gpio_Intr_Handler(void *InstancePtr)
 		return;
 	}
 	btn_value = XGpio_DiscreteRead(&GpioBtn, 1); // Channel 1
-
 	if (btn_value == 1) {   // Reset System
 		sys_en = 0;
 	}

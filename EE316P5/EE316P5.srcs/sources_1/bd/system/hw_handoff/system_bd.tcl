@@ -175,6 +175,7 @@ proc create_root_design { parentCell } {
    CONFIG.ASSOCIATED_RESET {reset} \
    CONFIG.FREQ_HZ {125000000} \
  ] $clk_sys
+  set led0_g [ create_bd_port -dir O -type data -integer  led0_g ]
   set pwm_motor [ create_bd_port -dir O -from 0 -to 0 pwm_motor ]
   set pwm_o [ create_bd_port -dir O pwm_o ]
   set reset [ create_bd_port -dir I -type rst reset ]
@@ -735,7 +736,7 @@ proc create_root_design { parentCell } {
   # Create port connections
   connect_bd_net -net PWM_0_pwm [get_bd_ports pwm_motor] [get_bd_pins PWM_0/pwm]
   connect_bd_net -net axi_gpio_0_ip2intc_irpt [get_bd_pins axi_gpio_0/ip2intc_irpt] [get_bd_pins xlconcat_0/In1]
-  connect_bd_net -net axi_timer_0_pwm0 [get_bd_ports pwm_o] [get_bd_pins axi_timer_0/pwm0]
+  connect_bd_net -net axi_timer_0_pwm0 [get_bd_ports led0_g] [get_bd_ports pwm_o] [get_bd_pins axi_timer_0/pwm0]
   connect_bd_net -net axi_timer_1_interrupt [get_bd_pins axi_timer_1/interrupt] [get_bd_pins xlconcat_0/In0]
   connect_bd_net -net clk_in1_0_1 [get_bd_ports clk_sys] [get_bd_pins clk_wiz_0/clk_in1]
   connect_bd_net -net clk_wiz_0_clk_125Mhz [get_bd_pins PWM_0/pwm_axi_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_gpio_1/s_axi_aclk] [get_bd_pins axi_timer_0/s_axi_aclk] [get_bd_pins axi_timer_1/s_axi_aclk] [get_bd_pins clk_wiz_0/clk_125Mhz] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/M03_ACLK] [get_bd_pins ps7_0_axi_periph/M04_ACLK] [get_bd_pins ps7_0_axi_periph/M05_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_clk_wiz_0_125M/slowest_sync_clk] [get_bd_pins xadc_wiz_0/s_axi_aclk]
