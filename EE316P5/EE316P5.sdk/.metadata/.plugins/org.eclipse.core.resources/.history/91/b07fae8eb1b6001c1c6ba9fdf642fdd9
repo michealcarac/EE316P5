@@ -1,0 +1,72 @@
+#include "main.h"
+
+
+int GPIO_Init(XGpio *InstancePtr, u32 DeviceId){
+	/* Initialize Status */
+	int Status;
+
+	/* Initialize GPIO */
+	Status = XGpio_Initialize(InstancePtr, DeviceId);
+
+	/* print fail if Timer does not initialize */
+	if (Status != XST_SUCCESS) {
+		printf("GPIO INIT FAIL");
+		return XST_FAIL;
+	}
+	return XST_SUCCESS;
+}
+
+int Int_Init(XGpio *InstancePtr,XScuGic *IntInstancePtr, u32 DeviceId){
+	/* Initialize Status */
+	XScuGic_Config *IntcConfig;
+	int Status;
+
+	/* Initialize Interrupt Controller */
+	IntcConfig = XScuGic_LookupConfig(DeviceId);
+	Status = XScuGic_CfgInitialize(IntInstancePtr,IntcConfig,IntcConfig->CpuBaseAddress);
+
+	/* print fail if Timer does not initialize */
+	if (Status != XST_SUCCESS) {
+		printf("INT INIT FAIL");
+		return XST_FAIL;
+	}
+
+	Status = InterruptSystemSetup(&Intc);
+
+	/* print fail if Timer does not initialize */
+	if (Status != XST_SUCCESS) {
+		printf("INT INIT FAIL");
+		return XST_FAIL;
+	}
+
+	Int_Connect_to_GPIO()
+	return XST_SUCCESS;
+}
+
+int Int_Connect_to_GPIO(XGpio *InstancePtr, u32 DeviceId){
+	int Status;
+
+	// Connect GPIO interrupt to handler
+	Status = XScuGic_Connect(&Intc,INTC_GPIO_INTERRUPT_ID,(Xil_ExceptionHandler)BTN_Intr_Handler,(void*)InstancePtr);
+
+	/* print fail if Timer does not initialize */
+	if (Status != XST_SUCCESS) {
+		printf("INT INIT FAIL");
+		return XST_FAIL;
+	}
+
+	// Enable GPIO interrupts interrupt
+	XGpio_InterruptEnable(InstancePtr,1);
+	XGpio_InterruptGlobalEnable(InstancePtr);
+
+	// Enable GPIO interrupts in the controller
+	XScuGic_Enable(&Intc,INTC_GPIO_INTERRUPT_ID);
+
+	return XST_SUCCESS;
+}
+
+int InterruptSystemSetup(XScuGic *XScuGicInstancePtr){
+	// Enable Interrupt
+	XGpio_InterruptEnable(&BTNInst,BTN_INT)
+	return XST_SUCCESS;
+}

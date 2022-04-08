@@ -1,0 +1,34 @@
+#include "main.h"
+
+
+void GPIO_Init(XGpio *InstancePtr, u32 DeviceId){
+
+	/* Initialize Status */
+	int Status;
+
+	/* Initialize GPIO */
+	Status = XGpio_Initialize(InstancePtr, DeviceId);
+
+	/* print fail if Timer does not initialize */
+	if (Status != XST_SUCCESS) {
+		printf("GPIO INIT FAIL");
+	}
+}
+
+void Int_Init(XGpio *InstancePtr, u32 DeviceId){
+
+	/* Initialize Status */
+	XScuGic_Config *IntcConfig;
+	int Status;
+
+	/* Initialize Interrupt Controller */
+	IntcConfig = XScuGic_LookupConfig(DeviceId);
+	Status = XScuGic_CfgInitialize(&Intc,IntcConfig,IntcConfig->CpuBaseAddress);
+
+	/* print fail if Timer does not initialize */
+	if (Status != XST_SUCCESS) {
+		printf("GPIO INIT FAIL");
+	}
+
+	Status = XScuGic_Connect(&INTCInst,)
+}

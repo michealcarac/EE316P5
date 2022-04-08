@@ -1,0 +1,96 @@
+#include "main.h"
+
+
+int GPIO_Init(XGpio *InstancePtr, u32 DeviceId){
+	/* Initialize Status */
+	int Status;
+
+	/* Initialize GPIO */
+	Status = XGpio_Initialize(InstancePtr, DeviceId);
+
+	/* print fail if Timer does not initialize */
+	if (Status != XST_SUCCESS) {
+		printf("GPIO INIT FAIL");
+		return XST_FAILURE;
+	}
+	return XST_SUCCESS;
+}
+
+int Int_Init(XGpio *InstancePtr, u32 DeviceId){
+	/* Initialize Status */
+	XScuGic_Config *IntcConfig;
+	int Status;
+
+	/* Initialize Interrupt Controller */
+	IntcConfig = XScuGic_LookupConfig(DeviceId);
+	Status = XScuGic_CfgInitialize(&Intc,IntcConfig,IntcConfig->CpuBaseAddress);
+
+	/* print fail if Timer does not initialize */
+	if (Status != XST_SUCCESS) {
+		printf("INT INIT FAIL");
+		return XST_FAILURE;
+	}
+
+	Status = InterruptSystemSetup(&Intc);
+
+	/* print fail if Timer does not initialize */
+	if (Status != XST_SUCCESS) {
+		printf("INT INIT FAIL");
+		return XST_FAIL;
+	}
+
+	Int_Connect_to_GPIO(&GpioBtn,BTN_DEVICE_ID);
+
+	return XST_SUCCESS;
+}
+
+int Int_Connect_to_GPIO(XGpio *InstancePtr, u32 DeviceId){
+	int Status;
+
+	// Connect GPIO interrupt to handler
+	Status = XScuGic_Connect(&Intc,INTC_GPIO_INTERRUPT_ID,(Xil_ExceptionHandler)BTN_Intr_Handler,(void*)InstancePtr);
+
+	/* print fail if Timer does not initialize */
+	if (Status != XST_SUCCESS) {
+		printf("INT INIT FAIL");
+		return XST_FAILURE;
+	}
+
+	// Enable GPIO interrupts interrupt
+	XGpio_InterruptEnable(InstancePtr,1);
+	XGpio_InterruptGlobalEnable(InstancePtr);
+
+	// Enable GPIO interrupts in the controller
+	XScuGic_Enable(&Intc,INTC_GPIO_INTERRUPT_ID);
+
+	return XST_SUCCESS;
+}
+
+int InterruptSystemSetup(XScuGic *XScuGicInstancePtr){
+	// Enable Interrupt
+	XGpio_InterruptEnable(&BTNInst,BTN_INT)
+	return XST_SUCCESS;
+}
+
+void BTN_Intr_Handler(void *InstancePtr)
+{
+	int btn_value;
+	// Disable GPIO interrupts
+	XGpio_InterruptDisable(&GpioBtn, BTN_DEVICE_ID);
+	// Ignore additional button presses
+	if ((XGpio_InterruptGetStatus(&GpioBtn) & BTN_DEVICE_ID) !=BTN_DEVICE_ID) {
+	return;
+	}
+	btn_value = XGpio_DiscreteRead(&GpioBtn, 1);
+	// Increment counter based on button value
+	// Reset if center button pressed
+	if(btn_value != 8)
+	led_data = led_data + btn_value;
+	else
+	led_data = 0;
+	XGpio_DiscreteWrite(&LEDInst, 1, led_data);
+	(void) XGpio_InterruptClear(&BTNInst, BTN_INT);
+	// Enable GPIO interrupts
+	XGpio_InterruptEnable(&BTNInst, BTN_INT);
+}
+

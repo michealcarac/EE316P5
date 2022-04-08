@@ -1,0 +1,115 @@
+#include "main.h"
+
+#define MY_GPIO 	XPAR_GPIO_0_BASEADDR
+XGpio Gpio;
+
+#define GPIO_EXAMPLE_DEVICE_ID  XPAR_GPIO_0_DEVICE_ID
+
+#define RS 0x20     /* PB5 mask for reg select */
+#define EN 0x80     /* PB7 mask for enable */
+
+void LCD_nibble_write(char data, unsigned char control);
+void LCD_command(unsigned char command);
+void LCD_data(char data);
+void LCD_init(void);
+//void PORTS_init(void);
+
+
+int main(void) {
+	int Status;
+		/* Initialize the GPIO driver */
+	Status = XGpio_Initialize(&Gpio, GPIO_EXAMPLE_DEVICE_ID);
+	if (Status != XST_SUCCESS) {
+		xil_printf("Gpio Initialization Failed\r\n");
+		return XST_FAILURE;
+	}
+    /* initialize LCD controller */
+    LCD_init();
+
+    while(1) {
+        /* Write "HELLO" on LCD */
+        LCD_data('H');
+        LCD_data('E');
+        LCD_data('L');
+        LCD_data('L');
+        LCD_data('O');
+        usleep(1000*1000);
+
+        /* clear LCD display */
+        LCD_command(1);
+        usleep(1000*1000);
+    }
+}
+
+/* initialize GPIOB/C then initialize LCD controller */
+void LCD_init(void) {
+    //PORTS_init();
+
+    usleep(20*1000);                /* LCD controller reset sequence */
+    LCD_nibble_write(0x30, 0);
+    usleep(5*1000);
+    LCD_nibble_write(0x30, 0);
+    usleep(1*1000);
+    LCD_nibble_write(0x30, 0);
+    usleep(1*1000);
+
+    LCD_nibble_write(0x20, 0);  /* use 4-bit data mode */
+    usleep(1*1000);
+    LCD_command(0x28);          /* set 4-bit data, 2-line, 5x7 font */
+    LCD_command(0x06);          /* move cursor right */
+    LCD_command(0x01);          /* clear screen, move cursor to home */
+    LCD_command(0x0F);          /* turn on display, cursor blinking */
+}
+
+//void PORTS_init(void) {
+//    RCC->AHB1ENR |=  0x06;          /* enable GPIOB/C clock */
+//
+//    /* PORTB 5 for LCD R/S */
+//    /* PORTB 7 for LCD EN */
+//    GPIOB->MODER &= ~0x0000CC00;    /* clear pin mode */
+//    GPIOB->MODER |=  0x00004400;    /* set pin output mode */
+//    GPIOB->BSRR = 0x00800000;       /* turn off EN */
+//
+//    /* PC4-PC7 for LCD D4-D7, respectively. */
+//    GPIOC->MODER &= ~0x0000FF00;    /* clear pin mode */
+//    GPIOC->MODER |=  0x00005500;    /* set pin output mode */
+//}
+
+void LCD_nibble_write(char data, unsigned char control) {
+	data &= 0xF0;
+	control &= 0x0F;
+    /* populate data bits */
+	Xil_Out32(MY_GPIO, data | control);
+	Xil_Out32(MY_GPIO, data | control | EN);
+	usleep(0);
+	Xil_Out32(MY_GPIO, data);
+	Xil_Out32(MY_GPIO, 0);
+
+    /* set R/S bit */
+//    if (control & RS)
+//    	Xil_Out32(MY_GPIO, RS);
+//    else
+//        Xil_Out32(MY_GPIO, RS << 16);
+//
+//    /* pulse E */
+//    Xil_Out32(MY_GPIO, EN);
+//    usleep(0);
+//    Xil_Out32(MY_GPIO, EN << 16);
+}
+
+void LCD_command(unsigned char command) {
+    LCD_nibble_write(command & 0xF0, 0);    /* upper nibble first */
+    LCD_nibble_write(command << 4, 0);      /* then lower nibble */
+
+    if (command < 4)
+        usleep(4*1000);         /* command 1 and 2 needs up to 1.64ms */
+    else
+        usleep(1*1000);         /* all others 40 us */
+}
+
+void LCD_data(char data) {
+    LCD_nibble_write(data & 0xF0, RS);      /* upper nibble first */
+    LCD_nibble_write(data << 4, RS);        /* then lower nibble */
+
+    usleep(1*1000);
+}

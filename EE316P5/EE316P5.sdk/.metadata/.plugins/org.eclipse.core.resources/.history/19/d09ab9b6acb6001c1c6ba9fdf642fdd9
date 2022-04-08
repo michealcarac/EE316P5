@@ -1,0 +1,13 @@
+#include "main.h"
+
+
+void timerPWM_Init(XTmrCtr *InstancePtr){
+	/* Initialize Status */
+	int Status;
+	/* Initialize Timer */
+	Status = XTmrCtr_Initialize(InstancePtr, TMRCTR_PWM_DEVICE_ID);
+	/* print fail if Timer does not initialize */
+	if (Status != XST_SUCCESS) {
+		printf("PWM INIT FAIL");
+	}
+}

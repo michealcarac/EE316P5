@@ -2,39 +2,43 @@
 /***************************** Include Files *********************************/
 #include "main.h"
 
-/************************** Variable Definitions *****************************/
-XTmrCtr TimerCounterInst;  /* The instance of the Timer Counter */
-XTmrCtr TimerPWMInst;      /* The instance of the Timer PWM */
-XSysMon Xadc;              /* The instance of the xADC */
-XGpio Btn;                 /* The instance of the Button GPIO */
-XGpio LCD;                 /* The instance of the LCD GPIO */
+
+/* Global States */
+int FSM_State = 1;
+int sys_en    = 1;
 
 int main(void)
 {
 	/* Initialize Variables */
-	//u8 ChannelIndex = 0;  /* Select ADC Channel */
+
+	/* ADC Value */
 	float ADC_Val = 0;
+
+	/* PWM Variables */
 	u32 PWM_Servo = 0;
 	u32 PWM_Timer = 0;
-	//u32 Btn_Data;         /* Initialize Button Data */
-	//Debounce Btn0_Db, Btn1_Db, Btn2_Db, Btn3_Db;  /* Type of Debounce */
-	/* Case Statements */
-	int FSM_State = 1;
-	int sys_en    = 1;
+
 	/* Incrementors */
 	u32 time_count = 0;  /* Counter for ADC, will be switched to a delay from timer interrupts */
 
-	/* ADC and Button Init */
+	/* ADC Init */
 	Xadc_Init(&Xadc, XADC_DEVICE_ID);
-//	Btn_Init(&Btn, BTN_DEVICE_ID);
-//	Debounce_Init(&Btn0_Db, 10000);
-//	Debounce_Init(&Btn1_Db, 10000);
-//	Debounce_Init(&Btn2_Db, 10000);
-//	Debounce_Init(&Btn3_Db, 10000);
+
 	/* Timer/PWM Init */
 	timerPWM_Init(&TimerPWMInst);   //Initialize Timer PWM
 	timerPWM_Config(&TimerPWMInst,TIMER_PWM_PERIOD,0); //Initialized to 0% duty
 	PWM_Config(PWM_PERIOD,0,0); //Initialized to 0% duty
+
+	/* GPIO Btns Initialize */
+	GPIO_Init(&GpioBtn,BTN_DEVICE_ID);
+	XGpio_SetDataDirection(&GpioBtn, 1,0xFF); // Set all buttons to inputs
+
+	/* GPIO LCD Initialize */
+	GPIO_Init(&GpioLCD,LCD_DEVICE_ID);
+	LCD_init();
+
+	/* Button Interrupt Enabled */
+	Int_Init(&Intc,&GpioBtn,INTC_DEVICE_ID,BTN_DEVICE_ID);
 
 	/* While loop */
 	while(1){
@@ -80,6 +84,17 @@ int main(void)
 					/* LCD Function Calls */
 					/* LCD Enable */
 					/* LCD Data Send */
+					printf("Writing to LCD\n\r");
+					LCD_data('H');
+					LCD_data('E');
+					LCD_data('L');
+					LCD_data('L');
+					LCD_data('O');
+					usleep(1000*1000);
+
+					/* clear LCD display */
+					LCD_command(1);
+					usleep(1000*1000);
 				}
 				time_count++;
 				usleep(1);
@@ -88,6 +103,37 @@ int main(void)
 
 	}
 
+}
+
+void Gpio_Intr_Handler(void *InstancePtr)
+{
+	int btn_value = 0;
+	int prev_button = 0;
+
+	// Disable GPIO interrupts
+	XGpio_InterruptDisable(&GpioBtn, XGPIO_IR_CH1_MASK);
+	// Ignore additional button presses
+	if ((XGpio_InterruptGetStatus(&GpioBtn) & XGPIO_IR_CH1_MASK) !=XGPIO_IR_CH1_MASK) {
+		return;
+	}
+	btn_value = XGpio_DiscreteRead(&GpioBtn, 1); // Channel 1
+
+	if (btn_value == 1) {   // Reset System
+		sys_en = 0;
+	}
+	else if (btn_value == 2) { // Switch Analog Source
+		FSM_State = !FSM_State;
+	}
+	else if (btn_value == 4) { // Switch System Enabled
+		sys_en = !sys_en;
+	}
+	else if ((prev_button == 1) & (btn_value == 0)){
+		sys_en = 1;
+	}
+	prev_button = btn_value;
+	(void) XGpio_InterruptClear(&GpioBtn, XGPIO_IR_CH1_MASK);
+	// Enable GPIO interrupts
+	XGpio_InterruptEnable(&GpioBtn, XGPIO_IR_CH1_MASK);
 }
 
 
