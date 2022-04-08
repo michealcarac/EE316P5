@@ -9520,3 +9520,48 @@ con
 ----------------End of Script----------------
 
 14:30:21 INFO  : Launch script is exported to file 'C:\Users\sixpe\Documents\college\EE316P5\EE316P5\EE316P5.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_system.elf_on_local.tcl'
+14:30:32 INFO  : Disconnected from the channel tcfchan#40.
+14:30:33 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Cora Z7 - 7010 210370AD5263A" && level==0} -index 1' command is executed.
+14:30:33 INFO  : 'fpga -state' command is executed.
+14:30:33 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:30:33 INFO  : Jtag cable 'Digilent Cora Z7 - 7010 210370AD5263A' is selected.
+14:30:33 INFO  : 'jtag frequency' command is executed.
+14:30:33 INFO  : Sourcing of 'C:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.sdk/system_wrapper_hw_platform_0/ps7_init.tcl' is done.
+14:30:33 INFO  : Context for 'APU' is selected.
+14:30:36 INFO  : Hardware design information is loaded from 'C:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.sdk/system_wrapper_hw_platform_0/system.hdf'.
+14:30:36 INFO  : 'configparams force-mem-access 1' command is executed.
+14:30:36 INFO  : Context for 'APU' is selected.
+14:30:36 INFO  : 'stop' command is executed.
+14:30:36 INFO  : 'ps7_init' command is executed.
+14:30:36 INFO  : 'ps7_post_config' command is executed.
+14:30:37 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:30:37 INFO  : Processor reset is completed for 'ps7_cortexa9_0'.
+14:30:37 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:30:37 INFO  : The application 'C:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.sdk/SYSTEM/Debug/SYSTEM.elf' is downloaded to processor 'ps7_cortexa9_0'.
+14:30:37 INFO  : 'configparams force-mem-access 0' command is executed.
+14:30:37 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source C:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.sdk/system_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Cora Z7 - 7010 210370AD5263A"} -index 0
+loadhw -hw C:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.sdk/system_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Cora Z7 - 7010 210370AD5263A"} -index 0
+stop
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Cora Z7 - 7010 210370AD5263A"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Cora Z7 - 7010 210370AD5263A"} -index 0
+dow C:/Users/sixpe/Documents/college/EE316P5/EE316P5/EE316P5.sdk/SYSTEM/Debug/SYSTEM.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:30:37 INFO  : Memory regions updated for context APU
+14:30:37 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:30:37 INFO  : 'con' command is executed.
+14:30:37 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Cora Z7 - 7010 210370AD5263A"} -index 0
+con
+----------------End of Script----------------
+
+14:30:37 INFO  : Launch script is exported to file 'C:\Users\sixpe\Documents\college\EE316P5\EE316P5\EE316P5.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_system.elf_on_local.tcl'
