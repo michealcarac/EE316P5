@@ -18237,3 +18237,217 @@ arm-none-eabi-size SYSTEM.elf  |tee "SYSTEM.elf.size"
   74836	   3568	  24256	 102660	  19104	SYSTEM.elf
 'Finished building: SYSTEM.elf.size'
 ' '
+11:52:34 **** Incremental Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+13:26:43 **** Incremental Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+13:42:21 **** Auto Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'Gpio_Intr_Handler':
+../src/main.c:126:30: warning: 'prev_button' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  else if ((prev_button == 1) & (btn_value == 0)){
+           ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: SYSTEM.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/ps7_cortexa9_0/lib -o "SYSTEM.elf"  ./src/main.o ./src/platform.o ./src/xadc_funct.o ./src/xgpio_funct.o ./src/xlcd_funct.o ./src/xpwm_funct.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: SYSTEM.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size SYSTEM.elf  |tee "SYSTEM.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  74836	   3568	  24256	 102660	  19104	SYSTEM.elf
+'Finished building: SYSTEM.elf.size'
+' '
+13:42:25 **** Incremental Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+13:44:30 **** Incremental Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+13:44:49 **** Incremental Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'Gpio_Intr_Handler':
+../src/main.c:126:30: warning: 'prev_button' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  else if ((prev_button == 1) & (btn_value == 0)){
+           ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: SYSTEM.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/ps7_cortexa9_0/lib -o "SYSTEM.elf"  ./src/main.o ./src/platform.o ./src/xadc_funct.o ./src/xgpio_funct.o ./src/xlcd_funct.o ./src/xpwm_funct.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: SYSTEM.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size SYSTEM.elf  |tee "SYSTEM.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  74836	   3568	  24272	 102676	  19114	SYSTEM.elf
+'Finished building: SYSTEM.elf.size'
+' '
+13:45:09 **** Incremental Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'Gpio_Intr_Handler':
+../src/main.c:126:30: warning: 'prev_button' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  else if ((prev_button == 1) & (btn_value == 0)){
+           ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: SYSTEM.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/ps7_cortexa9_0/lib -o "SYSTEM.elf"  ./src/main.o ./src/platform.o ./src/xadc_funct.o ./src/xgpio_funct.o ./src/xlcd_funct.o ./src/xpwm_funct.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: SYSTEM.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size SYSTEM.elf  |tee "SYSTEM.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  74836	   3568	  24272	 102676	  19114	SYSTEM.elf
+'Finished building: SYSTEM.elf.size'
+' '
+13:45:31 **** Auto Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'Gpio_Intr_Handler':
+../src/main.c:126:30: warning: 'prev_button' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  else if ((prev_button == 1) & (btn_value == 0)){
+           ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: SYSTEM.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/ps7_cortexa9_0/lib -o "SYSTEM.elf"  ./src/main.o ./src/platform.o ./src/xadc_funct.o ./src/xgpio_funct.o ./src/xlcd_funct.o ./src/xpwm_funct.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: SYSTEM.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size SYSTEM.elf  |tee "SYSTEM.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  74836	   3568	  24272	 102676	  19114	SYSTEM.elf
+'Finished building: SYSTEM.elf.size'
+' '
+13:45:34 **** Incremental Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+13:46:43 **** Auto Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:53:96: error: expected ')' before ';' token
+     PWM_Config(PWM_PERIOD,(u32)(((.1/ADC_MAXIMUM_VOLTAGE)*PWM_DUTY_MULTIPLIER)+PWM_DUTY_OFFSET);,0); //Initialized to 0% duty
+                                                                                                ^
+                                                                                                )
+../src/main.c:53:5: error: too few arguments to function 'PWM_Config'
+     PWM_Config(PWM_PERIOD,(u32)(((.1/ADC_MAXIMUM_VOLTAGE)*PWM_DUTY_MULTIPLIER)+PWM_DUTY_OFFSET);,0); //Initialized to 0% duty
+     ^~~~~~~~~~
+In file included from ../src/main.c:3:
+../src/main.h:52:6: note: declared here
+ void PWM_Config(int period, int duty, int pwmIndex);
+      ^~~~~~~~~~
+make: *** [src/subdir.mk:38: src/main.o] Error 1
+13:46:51 **** Auto Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'Gpio_Intr_Handler':
+../src/main.c:126:30: warning: 'prev_button' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  else if ((prev_button == 1) & (btn_value == 0)){
+           ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: SYSTEM.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/ps7_cortexa9_0/lib -o "SYSTEM.elf"  ./src/main.o ./src/platform.o ./src/xadc_funct.o ./src/xgpio_funct.o ./src/xlcd_funct.o ./src/xpwm_funct.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: SYSTEM.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size SYSTEM.elf  |tee "SYSTEM.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  74900	   3568	  24272	 102740	  19154	SYSTEM.elf
+'Finished building: SYSTEM.elf.size'
+' '
+13:46:54 **** Incremental Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+13:47:39 **** Auto Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../standalone_bsp_0/ps7_cortexa9_0/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'Gpio_Intr_Handler':
+../src/main.c:126:30: warning: 'prev_button' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  else if ((prev_button == 1) & (btn_value == 0)){
+           ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: SYSTEM.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/ps7_cortexa9_0/lib -o "SYSTEM.elf"  ./src/main.o ./src/platform.o ./src/xadc_funct.o ./src/xgpio_funct.o ./src/xlcd_funct.o ./src/xpwm_funct.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: SYSTEM.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size SYSTEM.elf  |tee "SYSTEM.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  74900	   3568	  24272	 102740	  19154	SYSTEM.elf
+'Finished building: SYSTEM.elf.size'
+' '
+13:54:52 **** Incremental Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+13:58:27 **** Incremental Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+13:58:28 **** Incremental Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.
+13:58:39 **** Incremental Build of configuration Debug for project SYSTEM ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+make: Nothing to be done for 'main-build'.

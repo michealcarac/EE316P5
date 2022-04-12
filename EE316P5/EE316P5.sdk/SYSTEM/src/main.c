@@ -4,7 +4,7 @@
 
 
 /* Global States */
-int FSM_State = 1;
+int FSM_State = 0;
 int sys_en    = 1;
 
 int main(void)
@@ -49,8 +49,8 @@ int main(void)
 				/* Reset variables */
 				FSM_State = 0;
 				/* Reset Peripherals */
-				timerPWM_Config(&TimerPWMInst,TIMER_PWM_PERIOD,0); //Initialized to 0% duty
-				PWM_Config(PWM_PERIOD,0,0); //Initialized to 0% duty
+				timerPWM_Config(&TimerPWMInst,TIMER_PWM_PERIOD,100); //Initialized to near 0% duty
+				PWM_Config(PWM_PERIOD,(u32)(((.1/ADC_MAXIMUM_VOLTAGE)*PWM_DUTY_MULTIPLIER)+PWM_DUTY_OFFSET),0); //Initialized to 2.5% duty
 
 				LCD_command(1);
 				LCD_data_ln("Reset/Disabled");
@@ -62,20 +62,21 @@ int main(void)
 					time_count = 0;
 					switch(FSM_State) {
 						case 0:
-							ADC_Val = Xadc_ReadConverted(&Xadc,1); //Grab ADC Value of channel 1
-							printf("ADC Value (A0): %.3f \n\r",ADC_Val);
-							LCD_command(1);
-							LCD_data_ln("    Enabled");
-							LCD_command(0xC0);
-							LCD_data_ln(" Photoresistor");
-							break;
-						case 1:
 							ADC_Val = Xadc_ReadConverted(&Xadc,9); //Grab ADC Value of channel 9
 							printf("ADC Value (A1): %.3f \n\r",ADC_Val);
 							LCD_command(1);
 							LCD_data_ln("    Enabled");
 							LCD_command(0xC0);
 							LCD_data_ln(" Potentiometer");
+
+							break;
+						case 1:
+							ADC_Val = Xadc_ReadConverted(&Xadc,1); //Grab ADC Value of channel 1
+							printf("ADC Value (A0): %.3f \n\r",ADC_Val);
+							LCD_command(1);
+							LCD_data_ln("    Enabled");
+							LCD_command(0xC0);
+							LCD_data_ln(" Photoresistor");
 							break;
 					}
 
